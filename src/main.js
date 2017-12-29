@@ -12,7 +12,7 @@ Vue.component('app', App);
 Vue.component('bpp', Bpp);
 new Vue({
     el: '#app',
-    template: '<app></app>',
+    template: '<div id="app"><app></app></div>',
     mounted: function() {
     },
     computed: {

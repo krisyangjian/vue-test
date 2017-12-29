@@ -1,37 +1,32 @@
 <template>
-	<div class="parent">
 	<el-scrollbar class="scrollbar">
 	<div class="container">
-		<div class="content">sadasd</div>
+		<div id="con" class="content">sss</div>
   	</div>
   </el-scrollbar>
-  </div>
 </template>
 
 <script>
 	export default {
 		mounted() {
-			console.log(3333)
+			// setTimeout(() => {
+			// 	document.getElementById('con').style.height = "5000px"
+			// }, 5000)
 		}
-		// data () {
-		// 	return {
-  //    		}
- 		}
+ 	}
 </script>
 <style>
 .scrollbar {
 	height: 100%;
 }
-	.parent, .container {
+	.container {
 		height: 100%;
-		width: 500px;
-		/*overflow: hidden;*/
-		
+		width: 100%;
+		background-color: #409eff;
 	}
 	.content {
-		height: 2000px;
-		width: 2000px;
-		background-color: blue;
+		height: 3000px;
+		background-color: #409eff;
 	}
 	.el-scrollbar__thumb {
 		background-color: white;
@@ -43,6 +38,6 @@
 		height: calc(100% + 16px);
 	}
 	.el-scrollbar__view {
-		height: 100%;
+		/* height: 100%; */
 	}
 </style>

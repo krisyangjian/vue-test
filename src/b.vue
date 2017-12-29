@@ -9,8 +9,5 @@
 		mounted() {
 			console.log("bbbb mounted")
 		}
-		// data () {
-		// 	return {
-  //    		}
- 		}
+ 	}
 </script>
