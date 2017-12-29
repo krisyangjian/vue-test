@@ -7,7 +7,7 @@ const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' );
 
 module.exports = {
   entry: {
-    app: './src/main.js',
+    app: './src/main.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -38,8 +38,8 @@ module.exports = {
   devServer: {
     // quiet: true,
     noInfo: true,
-    port: '9000',
-    hot: true
+    port: '9000'
+    // hot: true
     // contentBase: './dist'
   },
   plugins: [
@@ -47,6 +47,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: path.join(__dirname, 'index.html'),
     }),
+    // new webpack.HotModuleReplacementPlugin(),
     // new SimpleProgressWebpackPlugin({
     //   format: 'expanded'
     // }),

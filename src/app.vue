@@ -8,7 +8,13 @@
 
 <script>
 	export default {
+		beforeMount() {
+			debugger
+			console.log("before")
+		},
 		mounted() {
+			debugger
+			console.log("mounted");
 			// setTimeout(() => {
 			// 	document.getElementById('con').style.height = "5000px"
 			// }, 5000)
