@@ -2,8 +2,8 @@ import App from './app.vue'
 // import Bpp from './b.vue'
 import Vue from 'vue'
 // import './test.css'
-import 'element-ui/lib/theme-chalk/index.css';
-import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+// import ElementUI from 'element-ui';
 import Plug from './a.js';
 // import enLocale from 'element-ui/lib/locale/lang/en'
 // import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
@@ -49,6 +49,10 @@ Vue.use(Plug);
 // Vue.prototype._i18n = i18n;
 // console.log(Vue.options)
 // const i18n = Vue.options.i18n
+// function TTT() {
+
+// }
+// Vue.options.ttt = new TTT();
 debugger;
 new Vue({
     el: '#app',

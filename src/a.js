@@ -15,5 +15,8 @@ export default {
     // console.log(i18n)
     // console.log(i18n.locale)
     Vue.options.i18n = i18n;
+    Vue.config.optionMergeStrategies.i18n = function(parent, child) {
+      return parent;
+    }
   }
 }

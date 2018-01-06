@@ -2,10 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' );
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+// const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+// const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' );
+// const CompressionWebpackPlugin = require('compression-webpack-plugin')
+// const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -59,7 +59,7 @@ module.exports = {
     //   format: 'expanded'
     // }),
     // new LodashModuleReplacementPlugi(),
-    new FriendlyErrorsPlugin()
+    // new FriendlyErrorsPlugin()
     // new webpack.optimize.CommonsChunkPlugin({
       // name: 'vendor'
     //   minChunks: Infinity
