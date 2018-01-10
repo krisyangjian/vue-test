@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 // const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' );
 // const CompressionWebpackPlugin = require('compression-webpack-plugin')
@@ -14,7 +15,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].js'
+    filename: '[name].js',
+    chunkFilename: '[name].js'
     // publicPath: '/vue-test/dist'
   },
   // externals: {
@@ -25,7 +27,21 @@ module.exports = {
       {
         test: /\.vue$/,
         include: path.resolve(__dirname, "src"),
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            // scss: ['vue-style-loader', 'css-loader', 'sass-loader', {
+            //   loader: 'sass-resources-loader',
+            //   options: {
+            //     resources: path.resolve(__dirname, './src/var.scss')
+            //   }
+            // }]
+            scss: ExtractTextPlugin.extract({
+              use: ['css-loader', 'sass-loader'],
+              fallback: 'vue-style-loader' // <- 这是vue-loader的依赖，所以如果使用npm3，则不需要显式安装
+            })
+          }
+        }
       },
       {
         test: /\.js$/,
@@ -34,7 +50,19 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        // use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+        // use: ExtractTextPlugin.extract({
+        //   fallback: 'style-loader',
+        //   use: ['css-loader', 'sass-loader']
+        // })
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
@@ -44,10 +72,11 @@ module.exports = {
   },
   devServer: {
     // quiet: true,
-    noInfo: true,
+    // noInfo: true,
     port: '9000',
-    hot: true
-    // contentBase: './dist'
+    hot: true,
+    host: "0.0.0.0"
+    // contentBase: './src'
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -55,6 +84,8 @@ module.exports = {
       template: path.join(__dirname, 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin('style.css')
     // new SimpleProgressWebpackPlugin({
     //   format: 'expanded'
     // }),
