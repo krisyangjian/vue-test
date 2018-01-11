@@ -10,8 +10,8 @@
 				<li>3333</li>
 				<li>4444</li>
 				<li>5555</li>
-				<li>6666</li>
-				<li>7777</li>
+				<li>6666asasassadasddasddasdasd</li>
+				<li>sasdasdasdassdsdsdasddsdfsdasdaasdasdsdasd</li>
 			</ul>
 		</div>
 	<!-- </el-scrollbar> -->
@@ -21,7 +21,9 @@
 // import p from "./a.js"
 // console.log(p.name)
 	export default {
+		props: ['wrapClass'],
 		mounted() {
+			console.log(this.wrapClass);
 			// setTimeout(() => {
 			// 	this.$refs.con.style.height = "900px"
 			// }, 5000)
@@ -30,10 +32,11 @@
  	}
 </script>
 <style lang="scss">
-// @import './a.scss';
-
-	// .content {
-	// 	font-size: $--font-size;
-	// 	background-color: $--color-primary;
-	// }
+@import "./var.scss";
+@import "./var.scss";
+@import "./var.scss";
+@import "./var.scss";
+	.content {
+		color: $--color-primary;
+	}
 </style>
