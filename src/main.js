@@ -1,7 +1,7 @@
 import App from './app.vue'
 // // import Bpp from './b.vue'
 import Vue from 'vue'
-import './var.scss'
+// import './a.scss';
 // // import 'element-ui/lib/theme-chalk/index.css';
 // // import ElementUI from 'element-ui';
 // // import { setLocal } from './a.js';

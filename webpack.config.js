@@ -7,6 +7,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' );
 // const CompressionWebpackPlugin = require('compression-webpack-plugin')
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' );
 
 module.exports = {
   entry: {
@@ -30,16 +31,17 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            scss: ['vue-style-loader', 'css-loader', 'sass-loader']
             // scss: ['vue-style-loader', 'css-loader', 'sass-loader', {
             //   loader: 'sass-resources-loader',
             //   options: {
             //     resources: path.resolve(__dirname, './src/var.scss')
             //   }
             // }]
-            scss: ExtractTextPlugin.extract({
-              use: ['css-loader', 'sass-loader'],
-              fallback: 'vue-style-loader' // <- 这是vue-loader的依赖，所以如果使用npm3，则不需要显式安装
-            })
+            // scss: ExtractTextPlugin.extract({
+            //   use: ['css-loader', 'sass-loader'],
+            //   fallback: 'vue-style-loader' // <- 这是vue-loader的依赖，所以如果使用npm3，则不需要显式安装
+            // })
           }
         }
       },
@@ -71,7 +73,7 @@ module.exports = {
     ]
   },
   devServer: {
-    // quiet: true,
+    quiet: true,
     // noInfo: true,
     port: '9000',
     hot: true,
@@ -85,7 +87,10 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new ExtractTextPlugin('style.css')
+    // new ExtractTextPlugin('style.css'),
+    new SimpleProgressWebpackPlugin({
+      // format: 'expanded'
+    })
     // new SimpleProgressWebpackPlugin({
     //   format: 'expanded'
     // }),

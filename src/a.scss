@@ -1,3 +1,7 @@
+
+$--font-size: 20px;
 .content {
-  font-size: 30px;
+  font-size: $--font-size;
 }
+
+@import './var.scss';
