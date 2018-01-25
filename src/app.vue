@@ -1,42 +1,33 @@
 <template>
-	<!-- <el-scrollbar 
-		wrapClass="wrapper"
-		viewClass="view"
-		barWidth="12"> -->
-		<div class="content" ref="con">
-			<ul>
-				<li>1111</li>
-				<li>2222</li>
-				<li>3333</li>
-				<li>4444</li>
-				<li>5555</li>
-				<li>6666asasassadasddasddasdasd</li>
-				<li>sasdasdasdassdsdsdasddsdfsdasdaasdasdsdasd</li>
-			</ul>
-		</div>
-	<!-- </el-scrollbar> -->
+	<div class="bg">
+		<el-steps inish-status="success">
+  		<el-step title="步骤 1"></el-step>
+  		<el-step title="步骤 2"></el-step>
+  		<el-step title="步骤 3"></el-step>
+		</el-steps>
+		<div><div><div><div><div><div class="inner-a">aaaaaa</div></div></div></div></div></div>
+		<bbb></bbb>
+	</div>
 </template>
 
 <script>
-// import p from "./a.js"
-// console.log(p.name)
-	export default {
-		props: ['wrapClass'],
-		mounted() {
-			console.log(this.wrapClass);
-			// setTimeout(() => {
-			// 	this.$refs.con.style.height = "900px"
-			// }, 5000)
-			// console.log()
-		}
- 	}
+export default {
+}
 </script>
-<style lang="scss">
-@import "./var.scss";
-@import "./var.scss";
-@import "./var.scss";
-@import "./var.scss";
-	.content {
-		color: $--color-primary;
+<style scoped>
+	.bg {
+		background-color: blue;
+	}
+	.bg .el-steps .el-step__icon.is-text{
+		border: 10px solid;
+	}
+	.bg .inner-a {
+		color: #ffffff;
+	}
+	.bg .inner-b {
+		color: #ffffff;
+	}
+	.el-step .el-step__head{
+		font-size: 12px;
 	}
 </style>

@@ -31,17 +31,19 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            scss: ['vue-style-loader', 'css-loader', 'sass-loader']
-            // scss: ['vue-style-loader', 'css-loader', 'sass-loader', {
-            //   loader: 'sass-resources-loader',
-            //   options: {
-            //     resources: path.resolve(__dirname, './src/var.scss')
-            //   }
-            // }]
             // scss: ExtractTextPlugin.extract({
-            //   use: ['css-loader', 'sass-loader'],
-            //   fallback: 'vue-style-loader' // <- 这是vue-loader的依赖，所以如果使用npm3，则不需要显式安装
+            //   fallback: 'vue-style-loader',
+            //   use: ['css-loader', 'sass-loader', {
+            //     loader: 'sass-resources-loader',
+            //     options: {
+            //       resources: path.resolve(__dirname, './src/scss/index.scss')
+            //     }
+            //   }]
             // })
+            scss: ExtractTextPlugin.extract({
+              use: ['css-loader', 'sass-loader'],
+              fallback: 'vue-style-loader' // <- 这是vue-loader的依赖，所以如果使用npm3，则不需要显式安装
+            })
           }
         }
       },
@@ -59,12 +61,12 @@ module.exports = {
         })
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-        // use: ExtractTextPlugin.extract({
-        //   fallback: 'style-loader',
-        //   use: ['css-loader', 'sass-loader']
-        // })
+        test:/\.(scss|sass)$/,
+        // use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'fast-sass-loader']
+        })
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
@@ -87,34 +89,13 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    // new ExtractTextPlugin('style.css'),
+    new ExtractTextPlugin('style.css'),
     new SimpleProgressWebpackPlugin({
       // format: 'expanded'
     })
-    // new SimpleProgressWebpackPlugin({
-    //   format: 'expanded'
-    // }),
-    // new LodashModuleReplacementPlugi(),
-    // new FriendlyErrorsPlugin()
-    // new webpack.optimize.CommonsChunkPlugin({
-      // name: 'vendor'
-    //   minChunks: Infinity
-    // })
-    // new CompressionWebpackPlugin({
-    //   asset: '[path].gz[query]',
-    //   algorithm: 'gzip',
-    //   test: new RegExp(
-    //     '\\.(' +
-    //     ['js', 'css'].join('|') +
-    //     ')$'
-    //   ),
-    //   threshold: 10240,
-    //   minRatio: 0.8
-    // })
   ],
   resolve: {
     alias: {
-      'aaa': path.resolve(__dirname, './'),
       'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
     }
   }

@@ -2,8 +2,9 @@ import App from './app.vue'
 // // import Bpp from './b.vue'
 import Vue from 'vue'
 // import './a.scss';
-// // import 'element-ui/lib/theme-chalk/index.css';
-// // import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui';
+import bbb from './b.vue';
 // // import { setLocal } from './a.js';
 // // import enLocale from 'element-ui/lib/locale/lang/en'
 // // import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
@@ -27,8 +28,9 @@ import Vue from 'vue'
 // //   messages
 // // })
 // // console.log(Plug.name)
-// // Vue.use(ElementUI);
+Vue.use(ElementUI);
 Vue.component('app', App);
+Vue.component('bbb', bbb);
 // // Vue.component('VBar', VBar);
 // // Vue.use(Plug);
 
